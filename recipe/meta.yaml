@@ -1,5 +1,5 @@
 {% set name = "libtirpc" %}
-{% set version = "1.3.4" %}
+{% set version = "1.3.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://downloads.sourceforge.net/libtirpc/libtirpc-{{ version }}.tar.bz2
-  sha256: 1e0b0c7231c5fa122e06c0609a76723664d068b0dba3b8219b63e6340b347860
+  sha256: bbd26a8f0df5690a62a47f6aa30f797f3ef8d02560d1bc449a83066b5a1d3508
 
 build:
   number: 0
@@ -16,11 +16,12 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - make
 
 test:
   commands:
-  - test -f $PREFIX/lib/libtirpc$SHLIB_EXT
+    - test -f $PREFIX/lib/libtirpc$SHLIB_EXT
 about:
   home: http://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary
   summary: 'Libtirpc is a Transport-Independent RPC library for Linux'
