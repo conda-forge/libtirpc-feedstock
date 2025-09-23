@@ -47,6 +47,7 @@ tests:
       files:
         - etc/bindresvport.blacklist
         - etc/netconfig
+        - etc/conda/test-files/libtirpc/*
         - share/man/man3/*
         - share/man/man5/*
         - lib/pkgconfig/libtirpc.pc
@@ -84,6 +85,15 @@ tests:
         - tirpc/rpcsvc/crypt.x
       lib:
         - tirpc
+  - files:
+      recipe:
+        - test.c
+    requirements:
+      run:
+        - ${{ compiler('c') }}
+    script:
+      - $CC test.c -o test $CFLAGS -I${CONDA_PREFIX}/include/tirpc $LDFLAGS -ltirpc
+      - ./test
 
 about:
   summary: Libtirpc is a Transport-Independent RPC library for Linux
