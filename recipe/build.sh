@@ -1,3 +1,3 @@
-./configure --prefix=${PREFIX} --disable-gssapi
+./configure --prefix=${PREFIX} --enable-gssapi
 make
 make install

@@ -18,6 +18,11 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - make
+    - pkg-config
+  host:
+    - krb5
+  run:
+    - krb5
 
 test:
   commands:
