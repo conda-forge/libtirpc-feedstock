@@ -23,7 +23,7 @@ build:
     # c.f. https://krbdev.mit.edu/rt/Ticket/History.html?id=8349
     - if: osx
       then: export CFLAGS="${CFLAGS} -D__APPLE_USE_RFC_3542"
-    - ./configure --prefix=${PREFIX} --disable-static --disable-gssapi
+    - ./configure --prefix=${PREFIX} --disable-static
     - make --jobs="${CPU_COUNT}"
     - make install
 
