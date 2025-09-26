@@ -36,10 +36,15 @@ requirements:
     - make
     - pkg-config
     - gnuconfig
+    - krb5
     # Tools that autotools looks for
     - sed
     - grep
     - gawk
+  host:
+    - krb5
+  run:
+    - krb5
 
 tests:
   - package_contents:
