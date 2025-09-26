@@ -60,6 +60,7 @@ tests:
         - tirpc/netconfig.h
         - tirpc/rpc/auth.h
         - tirpc/rpc/auth_des.h
+        - tirpc/rpc/auth_gss.h
         - tirpc/rpc/auth_unix.h
         - tirpc/rpc/clnt.h
         - tirpc/rpc/clnt_soc.h
@@ -79,8 +80,10 @@ tests:
         - tirpc/rpc/rpcb_prot.h
         - tirpc/rpc/rpcb_prot.x
         - tirpc/rpc/rpcent.h
+        - tirpc/rpc/rpcsec_gss.h
         - tirpc/rpc/svc.h
         - tirpc/rpc/svc_auth.h
+        - tirpc/rpc/svc_auth_gss.h
         - tirpc/rpc/svc_dg.h
         - tirpc/rpc/svc_mt.h
         - tirpc/rpc/svc_soc.h
