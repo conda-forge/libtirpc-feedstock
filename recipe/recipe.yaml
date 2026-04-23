@@ -13,7 +13,7 @@ source:
   tag: libtirpc-${{ version | split(".") | join("-") }}
 
 build:
-  number: 1
+  number: 2
   skip: win
   script:
     - cp $BUILD_PREFIX/share/gnuconfig/config.* .
@@ -23,7 +23,7 @@ build:
     # c.f. https://krbdev.mit.edu/rt/Ticket/History.html?id=8349
     - if: osx
       then: export CFLAGS="${CFLAGS} -D__APPLE_USE_RFC_3542"
-    - ./configure --prefix=${PREFIX} --disable-static --disable-gssapi
+    - ./configure --prefix=${PREFIX} --disable-static
     - make --jobs="${CPU_COUNT}"
     - make install
 
@@ -36,10 +36,15 @@ requirements:
     - make
     - pkg-config
     - gnuconfig
+    - krb5
     # Tools that autotools looks for
     - sed
     - grep
     - gawk
+  host:
+    - krb5
+  run:
+    - krb5
 
 tests:
   - package_contents:
@@ -55,6 +60,7 @@ tests:
         - tirpc/netconfig.h
         - tirpc/rpc/auth.h
         - tirpc/rpc/auth_des.h
+        - tirpc/rpc/auth_gss.h
         - tirpc/rpc/auth_unix.h
         - tirpc/rpc/clnt.h
         - tirpc/rpc/clnt_soc.h
@@ -74,8 +80,10 @@ tests:
         - tirpc/rpc/rpcb_prot.h
         - tirpc/rpc/rpcb_prot.x
         - tirpc/rpc/rpcent.h
+        - tirpc/rpc/rpcsec_gss.h
         - tirpc/rpc/svc.h
         - tirpc/rpc/svc_auth.h
+        - tirpc/rpc/svc_auth_gss.h
         - tirpc/rpc/svc_dg.h
         - tirpc/rpc/svc_mt.h
         - tirpc/rpc/svc_soc.h
